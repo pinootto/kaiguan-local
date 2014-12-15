@@ -269,15 +269,27 @@ public class UsbSwitchReader implements Runnable, SerialPortEventListener {
 					
 					try {
 						
-						// execute the command
-						Runtime.getRuntime().exec(command);
+						// execute the command: switch ON
+						Runtime.getRuntime().exec(command + " true");
 						
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
-				} // end if
+				} else { // no button pressed
+					
+					try {
+						
+						// execute the command: switch OFF
+						Runtime.getRuntime().exec(command + " false");
+						
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
 			
 				break;
 		
