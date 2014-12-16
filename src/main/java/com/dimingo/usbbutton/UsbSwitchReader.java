@@ -265,9 +265,11 @@ public class UsbSwitchReader implements Runnable, SerialPortEventListener {
 				isStillButtonPressed = serialPort.isCD();
 				
 				// check if signal is stable
-				if (isButtonPressed == isStillButtonPressed) {
+				if (isButtonPressed == isStillButtonPressed) { // button pressed
 					
 					try {
+						
+						System.out.println("button pressed");
 						
 						// execute the command: switch ON
 						Runtime.getRuntime().exec(command + " true");
@@ -281,6 +283,8 @@ public class UsbSwitchReader implements Runnable, SerialPortEventListener {
 					
 					try {
 						
+						System.out.println("NO button pressed");
+						
 						// execute the command: switch OFF
 						Runtime.getRuntime().exec(command + " false");
 						
@@ -289,7 +293,7 @@ public class UsbSwitchReader implements Runnable, SerialPortEventListener {
 						e.printStackTrace();
 					}
 					
-				}
+				} // end else
 			
 				break;
 		
